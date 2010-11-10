@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"	
+	width="1024" height="600" creationComplete="creationCompleteHandler(event)">
+	<mx:Script>
+		<![CDATA[
+			import flexunit.flexui.TestRunnerBase;
+			import mx.events.FlexEvent;
+			import net.digitalprimates.fluint.ui.TestRunner;
+			import org.flexunit.listeners.UIListener;
+			import org.flexunit.runner.FlexUnitCore;
+			
+			
+			private var a:TestRunner;
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+				// FlexUnitCoreインスタンスを作成する
+				var core:FlexUnitCore = new FlexUnitCore();
+				
+				// GUI表示させる場合は、専用のリスナーを追加する
+				core.addListener(new UIListener(testRunner));
+				
+				
+				// テストを実行するrunメソッドで、引数に作成したテストクラスを指定する
+				core.run(HogeTest);
+			}
+		]]>
+	</mx:Script>
+	
+	
+</mx:Application>
